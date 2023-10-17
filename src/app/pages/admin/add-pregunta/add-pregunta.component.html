@@ -1,0 +1,62 @@
+<div class="bootstrap-wrapper">
+    <div class="row mt20">
+        <div class="col-md-12">
+            <h1 class="mt20">Agregando preguntas al examen <span style="font-weight: bold;"> {{ titulo }} </span> </h1>
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-subtitle>
+                        Digite los detalles de la nueva pregunta
+                    </mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+                    <form (submit)="formSubmit()" class="mt20">
+                        <mat-form-field class="w100">
+                            <mat-label>Digite el contenido de la pregunta</mat-label>
+                            <textarea 
+                            required
+                            matInput 
+                            placeholder="Escribe tu pregunta" 
+                            rows="8"
+                            name="contenido"
+                            [(ngModel)] = "pregunta.contenido"></textarea>
+                        </mat-form-field>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field class="w100">
+                                    <mat-label>Escriba la opción de respuesta 1</mat-label>
+                                    <input required matInput name="opcion1" [(ngModel)]="pregunta.opcion1" type="text" placeholder="Escriba aquí">
+                                </mat-form-field>
+                                <mat-form-field class="w100">
+                                    <mat-label>Escriba la opción de respuesta 2</mat-label>
+                                    <input required matInput name="opcion2" [(ngModel)]="pregunta.opcion2" type="text" placeholder="Escriba aquí">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-6">
+                                <mat-form-field class="w100">
+                                    <mat-label>Escriba la opción de respuesta 3</mat-label>
+                                    <input matInput required name="opcion3" [(ngModel)]="pregunta.opcion3" type="text" placeholder="Escriba aquí">
+                                </mat-form-field>
+                                <mat-form-field class="w100">
+                                    <mat-label>Escriba la opción de respuesta 4</mat-label>
+                                    <input matInput required name="opcion4" [(ngModel)]="pregunta.opcion4" type="text" placeholder="Escriba aquí">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <mat-form-field class="w100">
+                            <mat-label>Seleccione la respuesta</mat-label>
+                            <mat-select required [(ngModel)]="pregunta.respuesta" name="respuesta">
+                                <mat-option *ngIf="pregunta.opcion1" [value]="pregunta.opcion1">{{pregunta.opcion1}}</mat-option>
+                                <mat-option *ngIf="pregunta.opcion2" [value]="pregunta.opcion2">{{pregunta.opcion2}}</mat-option>
+                                <mat-option *ngIf="pregunta.opcion3" [value]="pregunta.opcion3">{{pregunta.opcion3}}</mat-option>
+                                <mat-option *ngIf="pregunta.opcion4" [value]="pregunta.opcion4">{{pregunta.opcion4}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                        <div class="container text-center">
+                            <button mat-raised-button color="primary">Guardar</button>
+                        </div>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>
